@@ -57,3 +57,18 @@ ReactDOM.render(
 ```
 
 Note that className must be used instead of class.
+
+## React Components
+
+### Components
+
+A component is a function which returns UI elements.
+
+A component function can be used in JSX as a Tag `<MyComponent/>` or `<MyComponent></MyComponent>`
+
+### Properties
+
+We can include the `props` parameter into our component function. Or we use paramter unpacking using `{key1, key2, key3}` syntax.
+
+It will pass in properties of the JSX tag into the function.
+
