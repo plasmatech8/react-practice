@@ -149,3 +149,15 @@ A reducer takes in a current state and returns a new state.
 We can use this to make our checkbox toggle more efficient.
 
 onChange={toggle}
+
+### Deploying a React App
+
+We can use `npm run build` to build a production application.
+
+The `build/` folder contains our minified packaged app.
+
+It can be served using `serve`
+
+`npm install -g serve; serve build/` or `npm install serve; npx serve build/`
+
+Notice that it will serve your app as a production build.
