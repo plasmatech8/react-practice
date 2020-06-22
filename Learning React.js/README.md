@@ -99,3 +99,17 @@ To avoid this, we can use `div`, but that causes clutter.
 We can use `React.Fragment` tags instead. Or use the shorthand: `<>...</>`
 
 ## 04. React States with Hooks
+
+### States and Effects
+
+We can import `useState` from react and use that to get and set states.
+
+```js
+const [status, setStatus] = useState("Open") // Default
+return (
+  <p>Status: {status}</p>
+  <button onClick={() => setStatus("Closed")}>Close</button> // Change status
+)
+```
+
+We can import `useEffect` from react. This can be used to cause event hooks to provide interactivity and functionality.

@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
+import { useState, useEffect } from 'react';
 
 const LAKELIST = [
   {id: 1, name: "Echo Lake"},
@@ -48,6 +49,14 @@ function App({ lakes, season }){
     see = <p>See the ski resort!</p>
   }
 
+  // States
+  const [status, setStatus] = useState("Opened");
+  const [manager, setManager] = useState("Jotaro");
+  const [checked, setChecked] = useState(true);
+  //useEffect(() => {
+  //  alert(`checked: $checked.toString()`)
+  //});
+
   // App JSX
   return (
     <>
@@ -69,6 +78,21 @@ function App({ lakes, season }){
       <Lakes lakes={LAKELIST}/>
       <h2>Conditional Rendering</h2>
       {see}
+      <h2>States and useEffect</h2>
+      <p>Status: {status}</p>
+      <button onClick={() => setStatus("Closed")}>Close</button>
+      <button onClick={() => setStatus("Opened")}>Open</button>
+      <p>Manager: {manager}</p>
+      <input type="text" id="newManager" name="newManager"></input>
+      <button onClick={() => setManager("Dio")}>Change manager</button>
+      <p>Checkbuton:</p>
+      <input
+        type="checkbox"
+        checked={checked}
+        id="checkbox"
+        onChange={() => setChecked(checked => !checked)}
+      />
+      <label for="checkbox">{checked ? "Checked" : "Not Checked"}</label>
     </>
   )
 }
