@@ -1,5 +1,7 @@
 # Become a React Developer
 
+Tutorial: https://www.linkedin.com/learning/learning-react-js-5/using-create-react-app?u=2093164
+
 ## 01. Getting Started with React
 
 Ways to use React:
@@ -58,7 +60,7 @@ ReactDOM.render(
 
 Note that className must be used instead of class.
 
-## React Components
+## 03. React Components
 
 ### Components and Properties
 
@@ -95,3 +97,5 @@ JSX expressions must have one parent.
 To avoid this, we can use `div`, but that causes clutter.
 
 We can use `React.Fragment` tags instead. Or use the shorthand: `<>...</>`
+
+## 04. React States with Hooks
