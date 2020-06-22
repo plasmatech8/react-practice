@@ -18,10 +18,13 @@ You should install React Developer Tools extension in your browser.
 
 ## 02. React Elements
 
-`public/index.html` is our main webpage. It contains a `<div id="root"></div>` which contains our app.
+`public/index.html` is our main webpage.
 
-`scr/index.js` renders your React app. It contains a `ReactDOM.render` function, where we
+`<div id="root"></div>` tag contains our app.
 
+`scr/index.js` script renders the app.
+
+`ReactDOM.render` function renders the app.
 
 ```js
 ReactDOM.render(
@@ -34,15 +37,23 @@ ReactDOM.render(
 Using `React.createElement` to create all of our elements can be unwieldy (especially in lists), so JSX was created (HTML syntax).
 
 ```js
+let city = {
+  name: "Madrid",
+  country: "Spain"
+};
+
 ReactDOM.render(
   <div>
-    <h1>Hello World!</h1>
+    <h1 id="heading" className="cool"> Hello World!</h1>
     <ul>
       <li>Dog</li>
       <li>Cat</li>
       <li>Hamster</li>
     </ul>
+    <p>{city.name} is in {city.country}</p>
   </div>,
   document.getElementById('root')
 );
 ```
+
+Note that className must be used instead of class.
