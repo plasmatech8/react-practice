@@ -10,7 +10,7 @@ Ways to use React:
 
 We will initialise a React app (execute node package binaries): `npx create-react-app hello-react --use-npm`
 
-We will either use live server or `npm start` to get started.
+We will either use live server or `npm start` to start the live server.
 
 `src/app.js` can be edited to update our homepage.
 
