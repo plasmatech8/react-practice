@@ -20,4 +20,29 @@ You should install React Developer Tools extension in your browser.
 
 `public/index.html` is our main webpage. It contains a `<div id="root"></div>` which contains our app.
 
-`scr/index.js` renders your React app.
+`scr/index.js` renders your React app. It contains a `ReactDOM.render` function, where we
+
+
+```js
+ReactDOM.render(
+  React.createElement(
+    "h1", { style: {color:"blue"}}, "...elements or text..."),
+  document.getElementById('root')
+);
+```
+
+Using `React.createElement` to create all of our elements can be unwieldy (especially in lists), so JSX was created (HTML syntax).
+
+```js
+ReactDOM.render(
+  <div>
+    <h1>Hello World!</h1>
+    <ul>
+      <li>Dog</li>
+      <li>Cat</li>
+      <li>Hamster</li>
+    </ul>
+  </div>,
+  document.getElementById('root')
+);
+```
