@@ -16,3 +16,8 @@ We will either use live server or `npm start` to get started.
 
 You should install React Developer Tools extension in your browser.
 
+## 02. React Elements
+
+`public/index.html` is our main webpage. It contains a `<div id="root"></div>` which contains our app.
+
+`scr/index.js` renders your React app.
