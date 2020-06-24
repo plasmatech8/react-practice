@@ -36,16 +36,19 @@ ReactDOM.render(
 
 Instead of function-based components, we can use class-based components.
 
+Destructuring can be used to make variables more convenient to access.
+
 ```js
-import React from 'react';
+import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 
-class Message extends React.Component {
+class Message extends Component {
   render(){
+    const {color, msg, minutes} = this.props;
     return (
       <div>
-        <h1 style={{color: this.props.color}}>{this.props.msg}</h1>
-        <p>I'll check back in {this.props.minutes} minutes.</p>
+        <h1 style={{color: color}}>{msg}</h1>
+        <p>I'll check back in {minutes} minutes.</p>
       </div>
     )
   }
