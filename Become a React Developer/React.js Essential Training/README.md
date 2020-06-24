@@ -8,4 +8,26 @@ Global install: `sudo npm install -g create-react-app`
 Golbal usage: `create-react-app`
 Or you can use non-global: `npx create-react-app hello-react --use-npm`
 
-## 02.
+## 02. React Elements
+
+```js
+var style = {
+  backgroundColor: 'orange',
+  color: 'white',
+  fontFamily: 'Arial'
+}
+/* const title = React.createElement(
+  'h1', // Element
+  {id: 'title', className: 'header', style: style},  // Attributes
+  'Hello' // Children
+) */
+const title = (
+  <h1 id="title", className="header" style={style}>
+  Hello
+  </h1>
+)
+ReactDOM.render(
+  title,
+  document.getElementById('root')
+);
+```
