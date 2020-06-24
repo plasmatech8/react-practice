@@ -1,4 +1,4 @@
-# Become a React Developer
+# Learning React.js
 
 Tutorial: https://www.linkedin.com/learning/learning-react-js-5/using-create-react-app?u=2093164
 
