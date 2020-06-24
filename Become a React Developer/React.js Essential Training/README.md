@@ -157,3 +157,127 @@ ReactDOM.render(
   document.getElementById('root')
 );
 ```
+(Add global helper functions at top)
+
+## 04 Props and State
+
+### Loops
+
+We can create **looped/nested components** using `Array.map`.
+
+### States
+
+We can add **component states** to our components using class constructors
+(we can also use states on funcitons with `useState`).
+
+We can change the state using a class function.
+`this.toggleOpenClosed = this.toggleOpenClosed.bind(this);` is required in the
+constructorto make `this` accessible from the `toggleOpenClosed` function.
+
+### Boilerplate removal
+
+Note that `state = { open: false }` can be used to replace **boilerplate code** in the constructor:
+```js
+constructor(props){
+    super(props);
+    this.state = {
+      open: true
+    };
+    this.toggleOpenClosed = this.toggleOpenClosed.bind(this);
+  }
+```
+Also, if you use arrow functions, they will automatically bind to `this`.
+
+## 05. Additional Library Features
+
+### Component lifecycle methods
+
+**Component lifecycle methods** are only available in class-based Components.
+
+i.e.
+* Constructor (initialise state and add hooks)
+* Render (re-render)
+* componentDidMount (after added to DOM, great for fetching data)
+* componentDidUpdate (when update is made)
+* componentWillUnmount (used for cleanup)
+
+### API calls
+
+An API call can be sent using `fetch` after the component is mounted to the DOM.
+```js
+componentDidMount(){
+  console.log("The component is now mounted!");
+  this.setState({loading: true});
+  fetch('https://hplussport.com/api/products/order/price/sort/asc/qty/1')
+    .then(data => data.json())
+    .then(data => this.setState({data, loading: false}))
+}
+```
+
+### Form inputs
+
+We can use forms which cause state changes.
+
+`e.preventDefault();` must be used to prevent a form from reloading the page.
+
+### Default props
+
+`defaultProps` can be set to provide default values for a Component tag when no
+properties are provided.
+
+i.e.
+```js
+  static defaultProps = {
+    books: [
+      {title: "Tahoe Tales", author: "Chet Whitley", pages: 100}
+    ]
+  }
+```
+Gives default values for``<Library/>` when no `books` property is included.
+
+We can also add default values for Components from within constructor/function.
+
+i.e.
+```js
+const {
+  title="No title provided",
+  author="NA",
+  pages="NA",
+  freeBookmark="NA"
+} = this.props;
+
+```
+
+### PropTypes
+
+The `prop-types` package can be used to console log when an invalid type is being used.
+
+i.e.
+```js
+import PropTypes from 'prop-types'
+
+Library.propTypes = {
+  books: PropTypes.array
+}
+
+Book.propTypes = {
+  title: PropTypes.string,
+  author: PropTypes.string,
+  pages: PropTypes.number,
+  freeBookmark: PropTypes.bool
+}
+```
+
+### Modularisation
+
+We can move each Component into its own file.
+
+If we use `export default Library`, it must be imported using `import Library from './Library'`.
+
+We can also set the export to an object and use destructuring.
+
+### Build the App
+
+Build using `npm run build`.
+
+It can be tested using `sdo npm install server` and `npx serve build/`

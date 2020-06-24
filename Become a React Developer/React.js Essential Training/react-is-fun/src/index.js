@@ -1,38 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import Library from './Library'
 
-function SkiDayCounter({total, powder, backcountry, goal}){
-  return (
-    <section>
-      <div>
-        <p>Total Days: {total}</p>
-      </div>
-      <div>
-        <p>(Powder Days: {powder}, Backcountry Days: {backcountry})</p>
-      </div>
-      <div>
-        <p>Goal Days: {goal}</p>
-      </div>
-      <div>
-        <p>Goal Progress: {total/goal * 100 + '%'}</p>
-      </div>
-    </section>
-  )
-}
 
-let skiData = {
-  total: 50,
-  powder: 20,
-  backcountry: 10,
-  goal: 100
-}
+let bookList = [
+  {title:"The Sun Also Rises", author:"Ernest Hemingway", pages:260},
+  {title:"JoJo's Bizarre Adventures", author:"Jotaro"},
+  {title:"Rich Dad Poor Dad", author:"Robert T. Kiyosaki", pages:207},
+];
 
 ReactDOM.render(
-  <SkiDayCounter
-    total={skiData.total}
-    powder={skiData.powder}
-    backcountry={skiData.backcountry}
-    goal={skiData.goal}
-  />,
+  <Library books={bookList}/>,
   document.getElementById('root')
 );
