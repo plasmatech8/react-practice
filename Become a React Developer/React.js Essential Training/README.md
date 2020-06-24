@@ -34,7 +34,7 @@ ReactDOM.render(
 
 ## 03. React Components
 
-Instead of function-based components, we can use class-based components.
+Instead of function-based components, we can use **class-based components**.
 
 Destructuring can be used to make variables more convenient to access.
 
@@ -56,6 +56,104 @@ class Message extends Component {
 
 ReactDOM.render(
   <Message color="blue" msg="how are you?" minutes={8}/>,
+  document.getElementById('root')
+);
+```
+
+We can also add **custom methods** to our Component classes.
+
+```js
+import React, {Component} from 'react';
+import ReactDOM from 'react-dom';
+
+class SkiDayCounter extends Component {
+  getPercent = decimal => {
+    return decimal * 100 + '%'
+  }
+
+  calcGoalProgress = (total, goal) => {
+    return this.getPercent(total/goal)
+  }
+
+  render(){
+    const {total, powder, backcountry, goal} = this.props;
+    return (
+      <section>
+        <div>
+          <p>Total Days: {total}</p>
+        </div>
+        <div>
+          <p>(Powder Days: {powder}, Backcountry Days: {backcountry})</p>
+        </div>
+        <div>
+          <p>Goal Days: {goal}</p>
+        </div>
+        <div>
+          <p>Goal Progress: {this.calcGoalProgress(total, goal)}</p>
+        </div>
+      </section>
+    )
+  }
+}
+
+let skiData = {
+  total: 50,
+  powder: 20,
+  backcountry: 10,
+  goal: 100
+}
+
+ReactDOM.render(
+  <SkiDayCounter
+    total={skiData.total}
+    powder={skiData.powder}
+    backcountry={skiData.backcountry}
+    goal={skiData.goal}
+  />,
+  document.getElementById('root')
+);
+```
+
+We can also use function Components (arrow or function or function-statement).
+
+My favourite way to do it is below
+```js
+import React from 'react';
+import ReactDOM from 'react-dom';
+
+function SkiDayCounter({total, powder, backcountry, goal}){
+  return (
+    <section>
+      <div>
+        <p>Total Days: {total}</p>
+      </div>
+      <div>
+        <p>(Powder Days: {powder}, Backcountry Days: {backcountry})</p>
+      </div>
+      <div>
+        <p>Goal Days: {goal}</p>
+      </div>
+      <div>
+        <p>Goal Progress: {total/goal * 100}</p>
+      </div>
+    </section>
+  )
+}
+
+let skiData = {
+  total: 50,
+  powder: 20,
+  backcountry: 10,
+  goal: 100
+}
+
+ReactDOM.render(
+  <SkiDayCounter
+    total={skiData.total}
+    powder={skiData.powder}
+    backcountry={skiData.backcountry}
+    goal={skiData.goal}
+  />,
   document.getElementById('root')
 );
 ```

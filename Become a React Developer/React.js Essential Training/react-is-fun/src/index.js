@@ -1,19 +1,38 @@
-import React, {Component} from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
 
-class Message extends Component {
-  render(){
-    const {color, msg, minutes} = this.props;
-    return (
+function SkiDayCounter({total, powder, backcountry, goal}){
+  return (
+    <section>
       <div>
-        <h1 style={{color: color}}>{msg}</h1>
-        <p>I'll check back in {minutes} minutes.</p>
+        <p>Total Days: {total}</p>
       </div>
-    )
-  }
+      <div>
+        <p>(Powder Days: {powder}, Backcountry Days: {backcountry})</p>
+      </div>
+      <div>
+        <p>Goal Days: {goal}</p>
+      </div>
+      <div>
+        <p>Goal Progress: {total/goal * 100 + '%'}</p>
+      </div>
+    </section>
+  )
+}
+
+let skiData = {
+  total: 50,
+  powder: 20,
+  backcountry: 10,
+  goal: 100
 }
 
 ReactDOM.render(
-  <Message color="blue" msg="how are you?" minutes={8}/>,
+  <SkiDayCounter
+    total={skiData.total}
+    powder={skiData.powder}
+    backcountry={skiData.backcountry}
+    goal={skiData.goal}
+  />,
   document.getElementById('root')
 );
