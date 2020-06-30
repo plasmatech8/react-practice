@@ -79,10 +79,31 @@ componentDidMount(){
       });
 }
 ```
-If you go into the Components tab in your browser, and click on the App component, you can see the props, state and source file.
+If you go into the Components tab in your browser, and click on the App
+component, you can see the props, state and source file.
 
 ### Keys
 
 When you loop to create multiple elements, you need to add a `key` attribute.
 
-You might need to use a primary key, or add index as you loop through (either using enumeration or tracking the lastIndex).
+You might need to use a primary key, or add index as you loop through (either
+using enumeration or tracking the lastIndex).
+
+### Premade components
+
+We can use the premade components from `react-icons` to obtain a facnier X
+symbol.
+```js
+// A fancy(er) X symbol
+import {FaTimes} from 'react-icons/fa';
+<FaTimes/>
+```
+
+We can use the premade components from `react-moment` to reformat our dates from
+military time (2018-11-28 14:45) to a pretty time.
+```js
+import Moment from 'react-moment';
+<Moment date={item.aptDate}
+        parse="YYY-MM-dd hh:mm"
+        format="D MMMM, h:MMa"/>
+```
