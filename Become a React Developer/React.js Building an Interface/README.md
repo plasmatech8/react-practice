@@ -53,3 +53,6 @@ We will create a `src/components` and `src/css` folder.
 
 BE CAREFUL WITH ORDER OF IMPORTS FOR CSS. css is implemented in imported order.
 
+## 02. Working with Components
+
+Created AddAppointments, ListAppointments, and SearchComponents.
