@@ -56,3 +56,27 @@ BE CAREFUL WITH ORDER OF IMPORTS FOR CSS. css is implemented in imported order.
 ## 02. Working with Components
 
 Created AddAppointments, ListAppointments, and SearchComponents.
+
+### LifeCycle
+
+We can fetch data on component mount into the DOM.
+```js
+constructor(){
+    super();
+    this.state = {
+      myName: 'Ray',
+      myAppointments: []
+    }
+}
+componentDidMount(){
+    fetch('./data.json')
+      .then(response => response.json())
+      .then(result => {
+        const apts = result.map(item => {
+          return item;
+        })
+        this.setState({myAppointments: apts});
+      });
+}
+```
+If you go into the Components tab in your browser, and click on the App component, you can see the props, state and source file.
