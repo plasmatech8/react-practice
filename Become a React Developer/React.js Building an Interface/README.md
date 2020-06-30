@@ -80,3 +80,9 @@ componentDidMount(){
 }
 ```
 If you go into the Components tab in your browser, and click on the App component, you can see the props, state and source file.
+
+### Keys
+
+When you loop to create multiple elements, you need to add a `key` attribute.
+
+You might need to use a primary key, or add index as you loop through (either using enumeration or tracking the lastIndex).
