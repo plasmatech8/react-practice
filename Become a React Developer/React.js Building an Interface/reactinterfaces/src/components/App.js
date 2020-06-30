@@ -32,8 +32,8 @@ class App extends Component {
             <div className="col-md-12 bg-white">
               <div className="container">
                 <AddAppointments/>
-                <ListAppointments/>
                 <SearchAppointments/>
+                <ListAppointments appointments={this.state.myAppointments}/>
               </div>
             </div>
           </div>
