@@ -107,3 +107,40 @@ import Moment from 'react-moment';
         parse="YYY-MM-dd hh:mm"
         format="D MMMM, h:MMa"/>
 ```
+
+## 03. Handling Events and Adding Records
+
+### Handling events through props
+
+We can pass a function as a subcomponent as a prop which can affect state in
+parent component.
+
+In the code, we will pass the `deleteAppointment` function into the
+`ListAppointments` component. When the delete button is pressed, the
+appointment is deleted from `App.props.myAppointments`.
+
+Keep in mind when making Component functions, **you need to either**:
+* Use arrow functions in your class
+* Use `this.deleteAppointment = this.deleteAppointment.bind(this);` to bind
+```js
+deleteAppointment = (apt) => {
+  let tempApts = this.state.myAppointments;
+  tempApts = without(tempApts, apt);
+  this.setState({myAppointments: tempApts});
+}
+```
+```js
+constructor(){
+  super();
+  this.state = {
+    myAppointments: [],
+    lastIndex: 0
+  }
+  this.deleteAppointment = this.deleteAppointment.bind(this)
+}
+deleteAppointment(apt){
+  let tempApts = this.state.myAppointments;
+  tempApts = without(tempApts, apt);
+  this.setState({myAppointments: tempApts});
+}
+```
