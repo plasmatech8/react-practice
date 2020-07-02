@@ -166,3 +166,16 @@ This state will need to be converted into database-format later.
 
 `AddAppointments` will use `onSubmit={this.handleAdd}` to transform the data
 and send the results to the `App.addAppointment` method (passed via props).
+
+## 04. Searching and Sorting
+
+### Search component
+
+We will add array sorting in the `App.render` method, based on the
+`orderBy` and `orderDir` states.
+
+The boxes in the dropdown box will be highlighed based on the state passed as
+props.
+
+The `AddAppointments.props.changeOrder(orderBy, orderDir)` function will be
+triggered when one of the dropdown items are clicked.

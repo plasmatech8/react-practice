@@ -12,8 +12,16 @@ class App extends Component {
     this.state = {
       myAppointments: [],
       lastIndex: 0,
-      formDisplay: true
+
+      formDisplay: true, // AddAppointments
+
+      orderBy: 'petName', // SearchAppointments/ListAppointments
+      orderDir: 'asc'
     }
+  }
+
+  changeOrder = (order, dir) => {
+    this.setState({orderBy: order, orderDir: dir});
   }
 
   toggleForm = () => {
@@ -50,6 +58,18 @@ class App extends Component {
   }
 
   render() {
+    // Sort appointments array
+    let order = this.state.orderDir === 'asc' ? 1 : -1;
+    let filteredApts = this.state.myAppointments;
+    filteredApts.sort((a,b) => {
+      if (a[this.state.orderBy].toLowerCase() <
+          b[this.state.orderBy].toLowerCase()){
+        return order * -1;
+      } else {
+        return order * 1;
+      }
+    });
+
     return (
       <main className="page bg-white" id="petratings">
         <div className="container">
@@ -61,9 +81,13 @@ class App extends Component {
                   toggleForm={this.toggleForm}
                   addAppointment={this.addAppointment}
                 />
-                <SearchAppointments/>
+                <SearchAppointments
+                  orderBy={this.state.orderBy}
+                  orderDir={this.state.orderDir}
+                  changeOrder={this.changeOrder}
+                />
                 <ListAppointments
-                  appointments={this.state.myAppointments}
+                  appointments={filteredApts}
                   deleteAppointment={this.deleteAppointment}
                 />
               </div>
