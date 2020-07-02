@@ -15,9 +15,14 @@ class App extends Component {
 
       formDisplay: true, // AddAppointments
 
-      orderBy: 'petName', // SearchAppointments/ListAppointments
-      orderDir: 'asc'
+      orderBy: 'petName', // SearchAppointments
+      orderDir: 'asc',
+      queryText: ''
     }
+  }
+
+  searchApts = (text) => {
+    this.setState({queryText: text});
   }
 
   changeOrder = (order, dir) => {
@@ -58,16 +63,24 @@ class App extends Component {
   }
 
   render() {
-    // Sort appointments array
+    // Sort and filter the appointments array
     let order = this.state.orderDir === 'asc' ? 1 : -1;
     let filteredApts = this.state.myAppointments;
-    filteredApts.sort((a,b) => {
-      if (a[this.state.orderBy].toLowerCase() <
-          b[this.state.orderBy].toLowerCase()){
-        return order * -1;
-      } else {
-        return order * 1;
-      }
+    filteredApts = filteredApts.sort((a,b) => {
+      return (a[this.state.orderBy].toLowerCase() <
+              b[this.state.orderBy].toLowerCase()) ? order * -1 : order * 1;
+    }).filter(item => {
+      return (
+        item['petName']
+          .toLowerCase()
+          .includes(this.state.queryText.toLowerCase()) ||
+        item['ownerName']
+          .toLowerCase()
+          .includes(this.state.queryText.toLowerCase()) ||
+        item['aptNotes']
+          .toLowerCase()
+          .includes(this.state.queryText.toLowerCase())
+      );
     });
 
     return (
@@ -85,6 +98,7 @@ class App extends Component {
                   orderBy={this.state.orderBy}
                   orderDir={this.state.orderDir}
                   changeOrder={this.changeOrder}
+                  searchApts={this.searchApts}
                 />
                 <ListAppointments
                   appointments={filteredApts}

@@ -179,3 +179,10 @@ props.
 
 The `AddAppointments.props.changeOrder(orderBy, orderDir)` function will be
 triggered when one of the dropdown items are clicked.
+
+### Live search input
+
+We will add `queryText` state to `App`.
+
+When the textbox is updated in `SearchAppointments`, it will run the
+`SearchAppointments.props.searchApts` function.
