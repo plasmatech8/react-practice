@@ -11,8 +11,23 @@ class App extends Component {
     super();
     this.state = {
       myAppointments: [],
-      lastIndex: 0
+      lastIndex: 0,
+      formDisplay: true
     }
+  }
+
+  toggleForm = () => {
+    this.setState({formDisplay: !this.state.formDisplay});
+  }
+
+  addAppointment = (apt) => {
+    let tempApts = this.state.myAppointments;
+    apt.aptId = this.state.lastIndex;
+    tempApts.unshift(apt); // add to start of the array
+    this.setState({
+      myAppointments: tempApts,
+      lastIndex: apt.aptId
+    });
   }
 
   deleteAppointment = (apt) => {
@@ -41,10 +56,16 @@ class App extends Component {
           <div className="row">
             <div className="col-md-12 bg-white">
               <div className="container">
-                <AddAppointments/>
+                <AddAppointments
+                  formDisplay={this.state.formDisplay}
+                  toggleForm={this.toggleForm}
+                  addAppointment={this.addAppointment}
+                />
                 <SearchAppointments/>
-                <ListAppointments appointments={this.state.myAppointments}
-                                  deleteAppointment={this.deleteAppointment}/>
+                <ListAppointments
+                  appointments={this.state.myAppointments}
+                  deleteAppointment={this.deleteAppointment}
+                />
               </div>
             </div>
           </div>

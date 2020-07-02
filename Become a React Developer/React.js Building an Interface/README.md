@@ -144,3 +144,25 @@ deleteAppointment(apt){
   this.setState({myAppointments: tempApts});
 }
 ```
+
+### Form display
+
+We will add a form to the `AddAppointments` component. The app will have a
+`formDisplay` state which determines whether the form is shown or hidden -
+which is toggled using the `App.toggleForm`.
+
+Local functions usually only do small work (i.e. handleFOrm) and will often
+pass the work to the parent component.
+
+### Form state
+
+`AddAppointments` will have state based on the form contents. The state is
+updated using the `onChange` event. The form can be updated based on state
+by beind the state to the input using `value={this.state.field}`.
+
+This state will need to be converted into database-format later.
+
+### Form submit
+
+`AddAppointments` will use `onSubmit={this.handleAdd}` to transform the data
+and send the results to the `App.addAppointment` method (passed via props).
