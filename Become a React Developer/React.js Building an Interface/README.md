@@ -186,3 +186,19 @@ We will add `queryText` state to `App`.
 
 When the textbox is updated in `SearchAppointments`, it will run the
 `SearchAppointments.props.searchApts` function.
+
+### Updating records with contentEditable
+
+The `contentEditable` attribute is cool but some work is needed to make it work
+in React without errors.
+
+```js
+<span
+  className="pet-name"
+  contentEditable
+  suppressContentEditableWarning
+  onBlur={e => this.props.updateInfo('petName', e.target.innerText, item.aptId)}
+>
+```
+We need to supress warnings and run the `updateInfo` function when the text is
+deselected.
