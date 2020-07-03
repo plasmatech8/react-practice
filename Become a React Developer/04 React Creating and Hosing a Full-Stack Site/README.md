@@ -73,6 +73,20 @@ We will also want to be able to parse post-request body:
 
 We can test the `/hello` endpoint using postman or other.
 
-### Route/URL parameters
+### API endpoint
 
+We will add an article upvote endpoint which increments the votes:
+`http://localhost:8000/api/articles/learn-react/upvote'`
 
+### Node Live Server
+
+Install: `npm install --save-dev nodemon`
+
+Use to run server we can use: `npx nodemon --exec babel-node src/server.js`
+
+To make this more convenient, we can go into `package.json` and add an item to
+the `scripts` object:
+```json
+    "start": "npx nodemon --exec npx babel-node src/server.js",
+```
+Now we can just use: `npm start`
