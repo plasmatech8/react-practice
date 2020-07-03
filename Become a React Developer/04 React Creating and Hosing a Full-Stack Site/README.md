@@ -2,7 +2,7 @@
 
 ## 1. Creating a React Front End
 
-### Basics
+### Starting
 
 ```bash
 npx create-react-app my-blog --use-npm
@@ -41,4 +41,38 @@ of articles, we will create an `<ArticlesList articles={articles}/>` component.
 
 We will create a page not found route that is the final route in the router and
 can be used in the `ArticlePage` when no article is found.
+
+## 2. Creating a Node Back End
+
+### Starting
+
+```bash
+cd my-blog-backend
+npm init -y
+npm install -s express
+
+mkdir src
+touch src/server.js
+```
+
+We also need to make a few small changes to allow the backend to support ES6
+(this was handled for us in our front-end):
+`npm install --save-dev @babel/core @babel/node @babel/preset-env`
+
+`.babelrc`:
+```json
+{
+    "presets": ["@babel/preset-env"]
+}
+```
+
+Run the server: `npx babel-node src/server.js`
+
+We will also want to be able to parse post-request body:
+`npm install -s body-parser`
+
+We can test the `/hello` endpoint using postman or other.
+
+### Route/URL parameters
+
 
