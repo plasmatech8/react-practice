@@ -129,3 +129,7 @@ mongo
 ```
 
 Find documents: `db.articles.find({}).pretty()`
+
+### Encorporate into backend
+
+Install `npm install -s mongodb`
