@@ -73,10 +73,10 @@ We will also want to be able to parse post-request body:
 
 We can test the `/hello` endpoint using postman or other.
 
-### API endpoint
+### Upvote API endpoint
 
 We will add an article upvote endpoint which increments the votes:
-`http://localhost:8000/api/articles/learn-react/upvote'`
+`http://localhost:8000/api/articles/learn-react/upvote'`.
 
 ### Node Live Server
 
@@ -90,3 +90,9 @@ the `scripts` object:
     "start": "npx nodemon --exec npx babel-node src/server.js",
 ```
 Now we can just use: `npm start`
+
+### Comment API endpoint
+
+We will add a comments endpoint under POST:
+`http://localhost:8000//api/articles/:name/add-comment`.
+
