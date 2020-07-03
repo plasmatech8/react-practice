@@ -97,7 +97,7 @@ We will add a comments endpoint under POST:
 `http://localhost:8000//api/articles/:name/add-comment`
 json={username, password}.
 
-## Setting up MongoDB
+## 3. Setting up MongoDB
 
 ### Setup database
 
@@ -157,3 +157,7 @@ manager and use the MongoDB database object/functions to perform operations.
 
 Note that a lot of MongoDB functions are `await`/`promise` functions which
 require to be contained used within an `async` function.
+
+## 4. Connecting Front End and Back Ends
+
+https://www.linkedin.com/learning/react-creating-and-hosting-a-full-stack-site/the-fetch-api?u=2093164
