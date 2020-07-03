@@ -1,12 +1,29 @@
 import React from 'react';
 
-const ArticlePage = () => (
-  <>
-    <h1>This is an Article</h1>
-    <p>Bla bla Bla</p>
-    <p>Bla bla Bla</p>
-    <p>Bla bla Bla</p>
-  </>
-);
+import articleContent from './article-content';
+import ArticlesList from '../components/ArticlesList';
+import NotFoundPage from './NotFoundPage';
+
+
+const ArticlePage = ({ match }) => {
+  const name = match.params.name;
+  const article = articleContent.find(article => article.name === name);
+
+  // Page not found
+  if (!article)
+    return <NotFoundPage/>;
+
+  const otherArticles = articleContent.filter(a => a.name !== name);
+
+  return (
+    <>
+      <h1>{article.title}</h1>
+      {article.content.map((paragraph, key) => <p key={key}>{paragraph}</p>)}
+
+      <h3>Other Articles:</h3>
+      <ArticlesList articles={otherArticles}/>
+    </>
+  );
+}
 
 export default ArticlePage;
