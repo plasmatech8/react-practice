@@ -133,3 +133,27 @@ Find documents: `db.articles.find({}).pretty()`
 ### Encorporate into backend
 
 Install `npm install -s mongodb`
+
+We will import MongoClient and create a helper function / context manager to
+avoid repitition:
+```js
+const withDB = async (operations, res) => {
+  try {
+    const client = await MongoClient.connect(
+      "mongodb://localhost:27017",
+      { useNewUrlParser: true, useUnifiedTopology: true }
+    );
+    const db = client.db('my-blog');
+    await operations(db);
+    client.close()
+  } catch (error) {
+    res.status(500).json({ message: "Database Error", error});
+  }
+}
+```
+
+We can pass the `operations` function and the `res` object into the context
+manager and use the MongoDB database object/functions to perform operations.
+
+Note that a lot of MongoDB functions are `await`/`promise` functions which
+require to be contained used within an `async` function.
