@@ -97,3 +97,35 @@ We will add a comments endpoint under POST:
 `http://localhost:8000//api/articles/:name/add-comment`
 json={username, password}.
 
+## Setting up MongoDB
+
+### Setup database
+
+Setup the (default) database: `sudo mkdir -p data/db`
+
+To ensure permissions are correct: `sudo chown -R `id -us\` /data/db`
+
+Open mongo shell and select database:
+```
+mongo
+> use my-blog
+> db.articles.insert([
+...     {
+...         name: 'learn-react',
+...         upvotes: 0,
+...         comments: [],
+...     },
+...     {
+...         name: 'learn-node',
+...         upvotes: 0,
+...         comments: [],
+...     },
+...     {
+...         name: 'my-thoughts-on-resumes',
+...         upvotes: 0,
+...         comments: [],
+...     }
+... ])
+```
+
+Find documents: `db.articles.find({}).pretty()`
