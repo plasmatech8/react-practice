@@ -270,3 +270,33 @@ on the server - so that the commentsList updates when the button is submitted.
     setCommentText('');
   }
 ```
+
+## 5. Hosting the Site
+
+### Final preparations
+
+`my-blog/public/index.html`:
+* Set title tag
+
+`my-blog/public/manifest.json`:
+* Change short_name and name
+
+Build the React app:
+```bash
+cd my-blog
+npm run build
+```
+
+Copy `my-blog/build` to `my-blog-backend/src/build`.
+
+Add to `myblog-backed/src/server.js`:
+```js
+app.use(express.static(path.join(__dirname, './build')));
+```
+Add to the bottom of `myblog-backed/src/server.js` (if no other routes match):
+```js
+// React Application route
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '/build/index.html'));
+});
+```

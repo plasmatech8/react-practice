@@ -1,6 +1,7 @@
 import express from 'express';
 import bodyParser from 'body-parser';
 import { MongoClient } from 'mongodb';
+import path from 'path';
 
 // Helper functions
 const withDB = async (operations, res) => {
@@ -20,6 +21,7 @@ const withDB = async (operations, res) => {
 // App
 const app = express();
 app.use(bodyParser.json());
+app.use(express.static(path.join(__dirname, '/build')));
 
 // Hello routes
 app.get('/hello', (req, res) => res.send('Hello!'));
@@ -72,6 +74,11 @@ app.get('/api/articles/:name', async (req, res) => {
     const articleInfo = await db.collection('articles').findOne({ name: articleName });
     res.status(200).json(articleInfo);
   }, res)
+});
+
+// React Application route
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '/build/index.html'));
 });
 
 // Listen
