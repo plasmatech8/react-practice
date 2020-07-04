@@ -160,7 +160,9 @@ require to be contained used within an `async` function.
 
 ## 4. Connecting Front End and Back Ends
 
-### Retrieving data with React hooks
+### Retreive Upvotes and Comments from backend
+
+#### Retrieving data with React hooks
 
 We can use the `fetch` function (fetch API) to retieve data from the database.
 This will not work on Internet Explorer by default so we will install:
@@ -170,7 +172,7 @@ make sure it works on all browsers.
 We can create React hooks to keep track of states without using the Component
 class notation.
 
-### useState & useEffect
+#### useState & useEffect
 
 We can use `useState` to set the state of the article, and `useEffect` to
 retrieve the data.
@@ -183,7 +185,7 @@ we need to make sure we add a `DependencyList` to the `useEffect` function.
 We want the effect to fetch data on mount and when the URL changes (to another)
 article, so we will pass `name`.
 
-### fetch
+#### fetch data
 
 We will create a async function inside the effect function because we cannot
 use a async function for an effect and we require the `await` keyword.
@@ -196,3 +198,30 @@ In `package.json`, we will add another attribute:
 ```
 All http fetch requests will now be sent to the url. (This will also allow us
 to remove the 'http://localhost' part of the url in the fetch function)
+
+### Integration
+
+#### Display info
+
+We will use the state of the `ArticlePage` component:
+```json
+articleInfo: {
+    "_id": "5efef0c4d7a99dfc9721454a",
+    "name": "learn-node",
+    "upvotes": 2,
+    "comments": [
+        {
+            "username": "Matt",
+            "text": "I am a big dumb-ass, LOL"
+        }
+    ]
+}
+```
+Upvotes will be added to `ArticlePage` with a `p` tag.
+
+Comments will be added to `ArticlePage` with a `CommentsList` component.
+
+#### Upvote button
+
+
+#### Add comment form
