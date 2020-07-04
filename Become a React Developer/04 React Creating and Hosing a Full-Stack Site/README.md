@@ -217,11 +217,56 @@ articleInfo: {
     ]
 }
 ```
-Upvotes will be added to `ArticlePage` with a `p` tag.
+Upvotes will be added to `ArticlePage` with a `UpvotesSection` component.
 
 Comments will be added to `ArticlePage` with a `CommentsList` component.
 
-#### Upvote button
+#### Comments list
+```js
+<CommentsList comments={articleInfo.comments}/>
+```
+This section needs to show a h3 heading and display comments passed in.
 
+#### Upvote section + button
+```js
+<UpvotesSection
+  articleName={name}
+  upvotes={articleInfo.upvotes}
+  setArticleInfo={setArticleInfo}
+/>
+```
+The section needs to display the number of upvotes.
 
-#### Add comment form
+The section needs to send a POST request when the button is clicked.
+
+#### Comment form
+```js
+<AddCommentForm articleName={name} setArticleInfo={setArticleInfo}/>
+```
+We need to have state for username and commentText fields. The input tags
+need `value={myState}` and `onChange={(e) => setMyState(e.target.value)}` so
+that the state and form values are syncronised.
+
+We need the submit button to send a POST request with JSON content to the
+server using an async function.
+
+On submission, the article info on the page will be set to the returned info
+on the server - so that the commentsList updates when the button is submitted.
+
+```js
+  // Event for comment submission
+  const addComment = async () => {
+    const result = await fetch(
+      `/api/articles/${articleName}/add-comment`,
+      {
+        method: 'POST',
+        body: JSON.stringify({username, text: commentText}),
+        headers: { 'Content-Type': 'application/json' }
+      }
+    );
+    const body = await result.json();
+    setArticleInfo(body);
+    setUserName('');
+    setCommentText('');
+  }
+```
