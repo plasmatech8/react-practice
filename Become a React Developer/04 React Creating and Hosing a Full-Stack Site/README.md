@@ -160,4 +160,39 @@ require to be contained used within an `async` function.
 
 ## 4. Connecting Front End and Back Ends
 
-https://www.linkedin.com/learning/react-creating-and-hosting-a-full-stack-site/the-fetch-api?u=2093164
+### Retrieving data with React hooks
+
+We can use the `fetch` function (fetch API) to retieve data from the database.
+This will not work on Internet Explorer by default so we will install:
+`npm install -s whatwg-fetch` and use `import 'whatwg-fetch';` in index.js to
+make sure it works on all browsers.
+
+We can create React hooks to keep track of states without using the Component
+class notation.
+
+### useState & useEffect
+
+We can use `useState` to set the state of the article, and `useEffect` to
+retrieve the data.
+
+Note that `useEffect` is run every time the component is mounted or updated, so
+we need to make sure we add a `DependencyList` to the `useEffect` function.
+* Empty array - when the component first loads
+* Array with variable - when the variable changes
+
+We want the effect to fetch data on mount and when the URL changes (to another)
+article, so we will pass `name`.
+
+### fetch
+
+We will create a async function inside the effect function because we cannot
+use a async function for an effect and we require the `await` keyword.
+
+We will also need to avoid CORS.
+
+In `package.json`, we will add another attribute:
+```json
+  "proxy": "http://localhost:8000/",
+```
+All http fetch requests will now be sent to the url. (This will also allow us
+to remove the 'http://localhost' part of the url in the fetch function)
