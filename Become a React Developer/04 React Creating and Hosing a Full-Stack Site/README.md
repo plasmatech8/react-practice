@@ -397,3 +397,11 @@ Open security group rules: Inbound HTTP anywhere.
 Open browser at public IP address.
 
 **DONE**
+
+## 6. Next Steps
+
+* Add login/logout
+* Improve form error handling
+* Secure MongoDB database
+* Buy a domain name
+* Write content for blog
