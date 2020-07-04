@@ -300,3 +300,100 @@ app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '/build/index.html'));
 });
 ```
+
+### Productionise
+
+Ensure the code is in a remote Git repository (GitHub).
+
+We will create an EC2 instance and create the server.
+
+SSH into EC2 server:
+```bash
+cp ~/Downloads/my-blog-keypair ~/.ssh/my-blog-keypair.pem
+chmod 400 ~/.ssh/my-blog-keypair.pem
+ssh -i ~/.ssh/my-blog-keypair.pem ec2-user@54.206.125.215
+```
+
+Install git and npm (see [this](https://docs.aws.amazon.com/sdk-for-javascript/v2/developer-guide/setting-up-node-on-ec2-instance.html)):
+```bash
+sudo yum install git -y
+
+# Install npm using nvm tool
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
+. ~/.nvm/nvm.sh
+nvm install v10.19.0
+npm install -g npm@latest
+```
+
+Install MongoDB (see [this](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-amazon/))
+```bash
+sudo nano /etc/yum.repos.d/mongodb-org-4.2.repo
+
+# Copy-paste
+[mongodb-org-4.2]
+name=MongoDB Repository
+baseurl=https://repo.mongodb.org/yum/amazon/2/mongodb-org/4.2/x86_64/
+gpgcheck=1
+enabled=1
+gpgkey=https://www.mongodb.org/static/pgp/server-4.2.asc
+
+# Do
+ctrl+o, enter, ctrl+x
+
+sudo yum install -y mongodb-org
+sudo service mongod start
+```
+
+Insert documents:
+```bash
+mongo
+use my-blog
+db.articles.insert([
+  {
+      name: 'learn-react',
+      upvotes: 0,
+      comments: [],
+  },
+  {
+      name: 'learn-node',
+      upvotes: 0,
+      comments: [],
+  },
+  {
+      name: 'my-thoughts-on-resumes',
+      upvotes: 0,
+      comments: [],
+  }
+])
+
+# Do
+ctrl+c
+```
+
+Retrieve code from GitHub and install npm packages:
+```bash
+git clone https://github.com/plasmatech8/react-practice.git
+
+cd react-practice/Become\ a\ React\ Developer/04\ React\ Creating\ and\ Hosing\ a\ Full-Stack\ Site/my-blog-backend
+npm install
+```
+
+Install `forever` package to keep our server running permanently.
+```bash
+npm install -g forever
+forever start -c "npm start" .
+
+# Check server
+forever list
+```
+
+Map port `80` to `localhost:8000`:
+```bash
+sudo iptables -t nat -A PREROUTING -p tcp --dport 80 -j REDIRECT --to-ports 8000
+```
+
+Open security group rules: Inbound HTTP anywhere.
+
+Open browser at public IP address.
+
+**DONE**
