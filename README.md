@@ -5,6 +5,7 @@ by [The Net Ninja](https://www.youtube.com/channel/UCW5YeuERMmlnqo4oq8vwUpg) on 
 
 - [React, Redux & Firebase App Tutorial](#react-redux--firebase-app-tutorial)
   - [Intro](#intro)
+  - [01. Getting Started](#01-getting-started)
 
 
 ## Intro
@@ -19,3 +20,22 @@ We will be using:
 ![](docs/2020-07-28-12-01-15.png)
 
 ![](docs/2020-07-28-12-01-34.png)
+
+
+## 01. Getting Started
+
+Initialise an app:
+```bash
+npx create-react-app marioplan
+cd marioplan
+npm start
+```
+
+We will use [MaterializeCSS](https://materializecss.com/getting-started.html)
+to easily style our website. CDN:
+```html
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+```
