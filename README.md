@@ -6,6 +6,7 @@ by [The Net Ninja](https://www.youtube.com/channel/UCW5YeuERMmlnqo4oq8vwUpg) on 
 - [React, Redux & Firebase App Tutorial](#react-redux--firebase-app-tutorial)
   - [Intro](#intro)
   - [01. Getting Started](#01-getting-started)
+  - [02. NavBar Component](#02-navbar-component)
 
 
 ## Intro
@@ -64,3 +65,19 @@ src
 ├── index.js
 └── serviceWorker.js
 ```
+
+## 02. NavBar Component
+
+We can use a bootstrap class nav-wrapper to makea navbar:
+`<nav className="nav-wrapper grey darken-3">`
+
+The `SignedInLinks`/`SignedOutLinks` will show a set of nav links depending
+on whether the user is logged in.
+* `<nav>` tags are automatically styled and positioned by Materialize
+* `<NavLink>` component makes it easy to make Nav entries.
+* It is easy to style using materialize:
+  * Profile button: `nav-wrapper grey darken-3`
+  * Navbar colours:`btn btn-floating pink lighten-1`
+  * Homepage button: `brand-logo`
+
+![](docs/2020-07-28-13-02-10.png)
