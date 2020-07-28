@@ -8,6 +8,7 @@ by [The Net Ninja](https://www.youtube.com/channel/UCW5YeuERMmlnqo4oq8vwUpg) on 
   - [01. Getting Started](#01-getting-started)
   - [02. NavBar Component](#02-navbar-component)
   - [03. Dashboard Component](#03-dashboard-component)
+  - [04. ProjectSummary, ProjectDetails](#04-projectsummary-projectdetails)
 
 
 ## Intro
@@ -91,3 +92,13 @@ Dashboard:
 We will also add propper routing.
 
 ![](docs/2020-07-28-14-23-29.png)
+
+## 04. ProjectSummary, ProjectDetails
+
+We will modularise the cards from `ProjectList` into `ProjectSummary`
+(stateless widget).
+
+We will initialise a page called `ProjectDetails` to hold information about the
+project.
+
+![](docs/2020-07-28-15-24-44.png)
