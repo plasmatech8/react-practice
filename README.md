@@ -39,3 +39,28 @@ to easily style our website. CDN:
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 ```
+
+We will structure the code as:
+```
+src
+├── App.js
+├── components
+│   ├── auth
+│   │   ├── SignIn.js
+│   │   └── SignUp.js
+│   ├── dashboard
+│   │   ├── Dashboard.js
+│   │   └── Notifications.js
+│   ├── layout
+│   │   ├── Navbar.js
+│   │   ├── SignedInLinks.js
+│   │   └── SignedOutLinks.js
+│   └── projects
+│       ├── CreateProject.js
+│       ├── ProjectDetails.js
+│       ├── ProjectList.js
+│       └── ProjectSummary.js
+├── index.css
+├── index.js
+└── serviceWorker.js
+```
