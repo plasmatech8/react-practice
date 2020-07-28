@@ -15,3 +15,7 @@ We will be using:
 * Firebase (Firestore, Auth, Cloud Functions, Hosting)
 
 ![](docs/2020-07-28-11-53-12.png)
+
+![](docs/2020-07-28-12-01-15.png)
+
+![](docs/2020-07-28-12-01-34.png)
