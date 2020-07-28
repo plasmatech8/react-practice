@@ -7,6 +7,7 @@ by [The Net Ninja](https://www.youtube.com/channel/UCW5YeuERMmlnqo4oq8vwUpg) on 
   - [Intro](#intro)
   - [01. Getting Started](#01-getting-started)
   - [02. NavBar Component](#02-navbar-component)
+  - [03. Dashboard Component](#03-dashboard-component)
 
 
 ## Intro
@@ -68,16 +69,25 @@ src
 
 ## 02. NavBar Component
 
-We can use a bootstrap class nav-wrapper to makea navbar:
-`<nav className="nav-wrapper grey darken-3">`
-
-The `SignedInLinks`/`SignedOutLinks` will show a set of nav links depending
-on whether the user is logged in.
+NavBar:
 * `<nav>` tags are automatically styled and positioned by Materialize
+* The `SignedInLinks` or `SignedOutLinks` component will show a set of nav links depending on whether the user is logged in.
 * `<NavLink>` component makes it easy to make Nav entries.
-* It is easy to style using materialize:
-  * Profile button: `nav-wrapper grey darken-3`
-  * Navbar colours:`btn btn-floating pink lighten-1`
-  * Homepage button: `brand-logo`
+
+It is easy to style using Materialize:
+* Profile button: `nav-wrapper grey darken-3`
+* Navbar colours:`btn btn-floating pink lighten-1`
+* Homepage button: `brand-logo`
 
 ![](docs/2020-07-28-13-02-10.png)
+
+## 03. Dashboard Component
+
+Dashboard:
+* Left side (ProjectList), Right side (Notification)
+* The cards will be styled with MaterializeCSS cards
+* Materialize grid: `row red` (row) and `col s12 m6 blue` (column, fill 12 cells on small [the 2 columns are placed in stacks], 6 cells on medium [the two columns are side-by-side])
+
+We will also add propper routing.
+
+![](docs/2020-07-28-14-23-29.png)
