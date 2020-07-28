@@ -8,7 +8,8 @@ by [The Net Ninja](https://www.youtube.com/channel/UCW5YeuERMmlnqo4oq8vwUpg) on 
   - [01. Getting Started](#01-getting-started)
   - [02. NavBar Component](#02-navbar-component)
   - [03. Dashboard Component](#03-dashboard-component)
-  - [04. ProjectSummary, ProjectDetails](#04-projectsummary-projectdetails)
+  - [04. ProjectSummary & ProjectDetails Components](#04-projectsummary--projectdetails-components)
+  - [05. Signin & Signup Components](#05-signin--signup-components)
 
 
 ## Intro
@@ -93,7 +94,7 @@ We will also add propper routing.
 
 ![](docs/2020-07-28-14-23-29.png)
 
-## 04. ProjectSummary, ProjectDetails
+## 04. ProjectSummary & ProjectDetails Components
 
 We will modularise the cards from `ProjectList` into `ProjectSummary`
 (stateless widget).
@@ -102,3 +103,25 @@ We will initialise a page called `ProjectDetails` to hold information about the
 project.
 
 ![](docs/2020-07-28-15-24-44.png)
+
+## 05. Signin & Signup Components
+
+We will create forms for sign up and sign in.
+
+The handle change and submit functions are important.
+```js
+  handleChange = (e) => {
+    this.setState({
+      [e.target.id]: e.target.value
+    });
+  }
+
+  handleSubmit = (e) => {
+    e.preventDefault();
+    alert('submitted');
+  }
+```
+
+Material forms are super easy, look amazing and are animated!
+
+![](docs/2020-07-28-16-08-21.png)

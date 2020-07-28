@@ -11,7 +11,7 @@ const NavBar = () => {
       <div className="container">
         < Link to='/' className="brand-logo">MarioPlan</Link>
         <SignedInLinks />
-        {/* <SignedOutLinks /> */}
+        <SignedOutLinks />
       </div>
     </nav >
   );

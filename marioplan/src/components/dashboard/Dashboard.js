@@ -4,7 +4,7 @@ import Notifications from './Notifications'
 import ProjectList from '../projects/ProjectList'
 
 
-export class Dashboard extends Component {
+class Dashboard extends Component {
   render() {
     return (
       <div clasName="dashboard">
