@@ -15,7 +15,7 @@ by [The Net Ninja](https://www.youtube.com/channel/UCW5YeuERMmlnqo4oq8vwUpg) on 
     - [1.7 Styling](#17-styling)
   - [2. Redux](#2-redux)
     - [2.1 Setting up Redux and Reducers](#21-setting-up-redux-and-reducers)
-    - [2.2](#22)
+    - [2.2 Using Redux and Reducers](#22-using-redux-and-reducers)
 
 
 ## Intro
@@ -175,4 +175,43 @@ ReactDOM.render(
 );
 ```
 
-### 2.2
+### 2.2 Using Redux and Reducers
+
+We can retrieve global state from the root reducer:
+```js
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
+
+import Notifications from './Notifications'
+import ProjectList from '../projects/ProjectList'
+
+
+class Dashboard extends Component {
+  render() {
+    const { projects } = this.props; // Set by mapStateToProps
+    return (
+      <div className="dashboard">
+        <div className="row">
+          <div className="col s12 m6">
+            <ProjectList projects={projects} />
+          </div>
+          <div className="col s12 m5 offset-m1">
+            <Notifications />
+          </div>
+        </div>
+      </div>
+    )
+  }
+}
+
+const mapStateToProps = (state) => {
+  return { projects: state.project.projects } // Obtained from provider store
+}
+
+export default connect(mapStateToProps)(Dashboard)
+```
+
+`connect` will allow us to use a function to obtain props from the provider
+store (which is set using rootReducer).
+
+Now we can pass the global state from the Dashboard to child components.
