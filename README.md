@@ -5,13 +5,17 @@ by [The Net Ninja](https://www.youtube.com/channel/UCW5YeuERMmlnqo4oq8vwUpg) on 
 
 - [React, Redux & Firebase App Tutorial](#react-redux--firebase-app-tutorial)
   - [Intro](#intro)
-  - [01. Getting Started](#01-getting-started)
-  - [02. NavBar Component](#02-navbar-component)
-  - [03. Dashboard Component](#03-dashboard-component)
-  - [04. ProjectSummary & ProjectDetails Components](#04-projectsummary--projectdetails-components)
-  - [05. Signin & Signup Components](#05-signin--signup-components)
-  - [06. Create Project Component](#06-create-project-component)
-  - [07. Styling](#07-styling)
+  - [1. Basic React App](#1-basic-react-app)
+    - [1.1 Getting Started](#11-getting-started)
+    - [1.2 NavBar Component](#12-navbar-component)
+    - [1.3 Dashboard Component](#13-dashboard-component)
+    - [1.4 ProjectSummary & ProjectDetails Components](#14-projectsummary--projectdetails-components)
+    - [1.5 Signin & Signup Components](#15-signin--signup-components)
+    - [1.6 Create Project Component](#16-create-project-component)
+    - [1.7 Styling](#17-styling)
+  - [2. Redux](#2-redux)
+    - [2.1 Setting up Redux and Reducers](#21-setting-up-redux-and-reducers)
+    - [2.2](#22)
 
 
 ## Intro
@@ -28,7 +32,9 @@ We will be using:
 ![](docs/2020-07-28-12-01-34.png)
 
 
-## 01. Getting Started
+## 1. Basic React App
+
+### 1.1 Getting Started
 
 Initialise an app:
 ```bash
@@ -71,7 +77,7 @@ src
 └── serviceWorker.js
 ```
 
-## 02. NavBar Component
+### 1.2 NavBar Component
 
 NavBar:
 * `<nav>` tags are automatically styled and positioned by Materialize
@@ -85,7 +91,7 @@ It is easy to style using Materialize:
 
 ![](docs/2020-07-28-13-02-10.png)
 
-## 03. Dashboard Component
+### 1.3 Dashboard Component
 
 Dashboard:
 * Left side (ProjectList), Right side (Notification)
@@ -96,7 +102,7 @@ We will also add propper routing.
 
 ![](docs/2020-07-28-14-23-29.png)
 
-## 04. ProjectSummary & ProjectDetails Components
+### 1.4 ProjectSummary & ProjectDetails Components
 
 We will modularise the cards from `ProjectList` into `ProjectSummary`
 (stateless widget).
@@ -106,7 +112,7 @@ project.
 
 ![](docs/2020-07-28-15-24-44.png)
 
-## 05. Signin & Signup Components
+### 1.5 Signin & Signup Components
 
 We will create forms for sign up and sign in.
 
@@ -128,11 +134,11 @@ Material forms are super easy, look amazing and are animated!
 
 ![](docs/2020-07-28-16-08-21.png)
 
-## 06. Create Project Component
+### 1.6 Create Project Component
 
 This will be a similar for as SignIn and SignUp.
 
-## 07. Styling
+### 1.7 Styling
 
 We can style the website with CSS:
 * Background image
@@ -140,3 +146,33 @@ We can style the website with CSS:
 * Underline colour on input elements
 
 ![](docs/2020-07-29-12-04-46.png)
+
+## 2. Redux
+
+### 2.1 Setting up Redux and Reducers
+
+```bash
+cd marioplan
+npm install redux react-redux
+```
+
+We will create:
+* authReducer
+* projectReducer
+* rootReducer (combines the two other reducers)
+
+We can utilise the rootReducer in index.js:
+```js
+import { createStore } from 'redux'
+import { Provider } from 'react-redux'
+import rootReducer from './store/reducers/rootReducer'
+
+const store = createStore(rootReducer);
+
+ReactDOM.render(
+  <React.StrictMode><Provider store={store}><App /></Provider></React.StrictMode>,
+  document.getElementById('root')
+);
+```
+
+### 2.2
