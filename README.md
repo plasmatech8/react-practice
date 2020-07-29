@@ -20,6 +20,7 @@ by [The Net Ninja](https://www.youtube.com/channel/UCW5YeuERMmlnqo4oq8vwUpg) on 
   - [3. Firebase](#3-firebase)
     - [3.1 Connecting Firebase](#31-connecting-firebase)
     - [3.2 Firestore](#32-firestore)
+    - [3.3 Connect Redux to Firebase](#33-connect-redux-to-firebase)
 
 
 ## Intro
@@ -319,3 +320,69 @@ We will have 3 collections:
 
 ![](docs/2020-07-29-14-33-02.png)
 
+### 3.3 Connect Redux to Firebase
+
+We will use npm packages specifically for Firebase and Redux.
+```bash
+npm install react-redux-firebase redux-firestore
+```
+
+index.js
+```js
+import { createStore, applyMiddleware, compose } from 'redux'
+import { reduxFirestore, getFirestore } from 'redux-firestore'
+import { reactReduxFirebase, getFirebase } from 'react-redux-firebase'
+
+import fbConfig from './config/fbConfig'
+
+const store = createStore(
+  rootReducer,
+  compose(
+    applyMiddleware(thunk.withExtraArgument({ getFirebase, getFirestore })),
+    reduxFirestore(fbConfig),
+    reactReduxFirebase(fbConfig)
+  )
+);
+// ...
+```
+
+projectActions.js
+```js
+export const createProject = (project) => {
+  return (dispatch, getState, { getFirebase, getFirestore }) => {
+    // Make async call to database
+    // ...
+    dispatch({ type: 'CREATE_PROJECT', project });
+  }
+}
+```
+
+Make sure that packages are installed:
+```
+npm uninstall react-redux
+npm uninstall react-redux-firebase
+npm i --save react-redux@5.1.1 react-redux-firebase@2.2.4
+```
+
+Now we can push our data to firestore in the action:
+```js
+
+export const createProject = (project) => {
+  return (dispatch, getState, { getFirebase, getFirestore }) => {
+    // Make async call to database
+    const firestore = getFirestore();
+    firestore.collection('projects').add({
+      ...project, // spread/unpack operator
+
+      // TODO: Firebase Auth
+      authorFirstName: 'Net',
+      authorLastName: 'Net',
+      createdAt: new Date(),
+    }).then(() => {
+      dispatch({ type: 'CREATE_PROJECT', project });
+    }).catch((err) => {
+      dispatch({ type: 'CREATE_PROJECT_ERROR', err });
+    });
+  }
+}
+```
