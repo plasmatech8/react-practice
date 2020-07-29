@@ -17,6 +17,9 @@ by [The Net Ninja](https://www.youtube.com/channel/UCW5YeuERMmlnqo4oq8vwUpg) on 
     - [2.1 Setting up Redux and Reducers](#21-setting-up-redux-and-reducers)
     - [2.2 Using Redux and Reducers](#22-using-redux-and-reducers)
     - [2.3 Redux Thunk for async Actions](#23-redux-thunk-for-async-actions)
+  - [3. Firebase](#3-firebase)
+    - [3.1 Connecting Firebase](#31-connecting-firebase)
+    - [3.2 Firestore](#32-firestore)
 
 
 ## Intro
@@ -259,3 +262,60 @@ projectReducer (reducer)
 
 Thunk allows us to use `mapDispatchToProps` to add a function to the props of
 the CreateProject Component (I think).
+
+## 3. Firebase
+
+### 3.1 Connecting Firebase
+
+Create a Firebase project.
+
+Click on `</> web`.
+
+Copy the script tag with code (we do not need to copy firebase js files
+because we will use npm install `npm install firebase`).
+
+```js
+import firebase from 'firebase/app'
+import 'firebase/firestore'
+import 'firebase/auth'
+
+// Your web app's Firebase configuration
+var firebaseConfig = {
+  apiKey: "AIzaSyCnGJDqq4mPmSRobuxuRemuyeC3_64voas",
+  authDomain: "marioplan-52689.firebaseapp.com",
+  databaseURL: "https://marioplan-52689.firebaseio.com",
+  projectId: "marioplan-52689",
+  storageBucket: "marioplan-52689.appspot.com",
+  messagingSenderId: "423214097707",
+  appId: "1:423214097707:web:849028ab44f81f3789d16e",
+  measurementId: "G-RSEVX6PLXB"
+};
+
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+firebase.analytics();
+
+firebase.firestore().settings({ timestampsInSnapshots: true });
+
+export default firebase;
+```
+
+### 3.2 Firestore
+
+We will have 3 collections:
+* Projects
+  * title
+  * content
+  * authorFirstName
+  * authorLastName
+  * authorId
+  * timestamp
+* Users
+  * (info about app users)
+* Notifications
+  * (info about notifications)
+
+**We will need to update Rules at some point for security**
+
+![](docs/2020-07-29-14-33-02.png)
+
