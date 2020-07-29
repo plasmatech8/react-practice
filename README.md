@@ -11,6 +11,7 @@ by [The Net Ninja](https://www.youtube.com/channel/UCW5YeuERMmlnqo4oq8vwUpg) on 
   - [04. ProjectSummary & ProjectDetails Components](#04-projectsummary--projectdetails-components)
   - [05. Signin & Signup Components](#05-signin--signup-components)
   - [06. Create Project Component](#06-create-project-component)
+  - [07. Styling](#07-styling)
 
 
 ## Intro
@@ -131,3 +132,11 @@ Material forms are super easy, look amazing and are animated!
 
 This will be a similar for as SignIn and SignUp.
 
+## 07. Styling
+
+We can style the website with CSS:
+* Background image
+* Padding on forms
+* Underline colour on input elements
+
+![](docs/2020-07-29-12-04-46.png)
