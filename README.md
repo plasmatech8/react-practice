@@ -10,6 +10,7 @@ by [The Net Ninja](https://www.youtube.com/channel/UCW5YeuERMmlnqo4oq8vwUpg) on 
   - [03. Dashboard Component](#03-dashboard-component)
   - [04. ProjectSummary & ProjectDetails Components](#04-projectsummary--projectdetails-components)
   - [05. Signin & Signup Components](#05-signin--signup-components)
+  - [06. Create Project Component](#06-create-project-component)
 
 
 ## Intro
@@ -125,3 +126,8 @@ The handle change and submit functions are important.
 Material forms are super easy, look amazing and are animated!
 
 ![](docs/2020-07-28-16-08-21.png)
+
+## 06. Create Project Component
+
+This will be a similar for as SignIn and SignUp.
+
