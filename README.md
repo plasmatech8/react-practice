@@ -16,6 +16,7 @@ by [The Net Ninja](https://www.youtube.com/channel/UCW5YeuERMmlnqo4oq8vwUpg) on 
   - [2. Redux](#2-redux)
     - [2.1 Setting up Redux and Reducers](#21-setting-up-redux-and-reducers)
     - [2.2 Using Redux and Reducers](#22-using-redux-and-reducers)
+    - [2.3 Redux Thunk for async Actions](#23-redux-thunk-for-async-actions)
 
 
 ## Intro
@@ -149,6 +150,14 @@ We can style the website with CSS:
 
 ## 2. Redux
 
+![](docs/2020-07-29-12-41-33.png)
+
+* **Store** is like the warehouse (`createStore(reducer)`)
+* **Reducers** are like robots that are allowed inside the warehouse to update the store (`func`)
+* **Actions** are a request to a reducer to do one of its actions in the store (`store.dispatch(obj)`)
+* We can also **subscribe** to the store (`store.subscribe(() => {store.getState()}))`)
+
+
 ### 2.1 Setting up Redux and Reducers
 
 ```bash
@@ -215,3 +224,38 @@ export default connect(mapStateToProps)(Dashboard)
 store (which is set using rootReducer).
 
 Now we can pass the global state from the Dashboard to child components.
+
+### 2.3 Redux Thunk for async Actions
+
+We can use Thunk to retrieve data after a component dispatches an action and
+before the action is passed to the reducer.
+
+```bash
+npm install redux-thunk
+```
+
+We can use `applyMiddleware` to add thunk.
+```js
+import { createStore, applyMiddleware } from 'redux'
+// ...
+const store = createStore(rootReducer, applyMiddleware(thunk));
+```
+
+Then we can add a function with the dispatch to the props of a component, so
+it can use the function.
+```js
+const mapDispatchToProps = (dispatch) => {
+  return {
+    createProject: (project) => dispatch(createProject(project))
+  }
+}
+
+export default connect(null, mapDispatchToProps)(CreateProject)
+```
+
+CreateProject (component) >>>handleSubmit>>>
+**createProject** (action) >>>dispatch>>>
+projectReducer (reducer)
+
+Thunk allows us to use `mapDispatchToProps` to add a function to the props of
+the CreateProject Component (I think).
