@@ -161,3 +161,17 @@ We can set a grid item to a number of (12) css grid slots.
 </Grid>
 ```
 (full page on extra small+, size 2 gutters on small+)
+
+### 2.2 Header / Appbar
+
+You can search all the icons from [here](https://material-ui.com/components/material-icons/).
+
+**FORMATTTING:**
+
+If we want an item to grow in the AppBar, and push other items to the right side,
+we can either use:
+* `useStyle` with `flexGrow: 1,` on a middle item
+* `Grid` to create 12 point proprotions
+* `flex=1` to proportionally fill space with elements
+
+

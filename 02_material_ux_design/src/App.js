@@ -1,28 +1,16 @@
 import React from 'react';
-import './App.css';
-import {
-  AppBar, Toolbar, IconButton, Typography, Button, Grid, Box
-} from '@material-ui/core'
-import MenuIcon from '@material-ui/icons/Menu';
+import { Grid, Box } from '@material-ui/core'
+
+import Header from './Header'
 
 function App() {
   return (
     <div className="App">
-      {/* <AppBar position="static">
-        <Toolbar>
-          <IconButton edge="start" color="inherit" aria-label="menu">
-            <MenuIcon />
-          </IconButton>
-          <Typography variant="h6" >
-            News
-          </Typography>
-          <Button color="inherit">Login</Button>
-        </Toolbar>
-      </AppBar> */}
+
 
       <Grid container direction="column">
         <Grid item>
-          <Box bgcolor='blue'>APP BAR</Box>
+          <Box bgcolor='blue'><Header /></Box>
         </Grid>
         <Grid item container>
           <Grid item xs={null} sm={2} />
