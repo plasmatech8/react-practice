@@ -1,5 +1,5 @@
 import React from 'react'
-import { BrowserRouter, Switch, Route } from 'react-router-dom'
+import { HashRouter as Router, Switch, Route } from 'react-router-dom'
 
 import NavBar from './components/layout/Navbar'
 import Dashboard from './components/dashboard/Dashboard'
@@ -10,7 +10,7 @@ import CreateProject from './components/projects/CreateProject'
 
 function App() {
   return (
-    <BrowserRouter>
+    <Router>
       <div className="App">
         <NavBar />
         <Switch>
@@ -22,7 +22,7 @@ function App() {
           <Route component={() => <p>Page not found</p>}></Route>
         </Switch>
       </div>
-    </BrowserRouter>
+    </Router>
   );
 }
 

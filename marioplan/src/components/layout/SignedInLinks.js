@@ -1,14 +1,15 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import { Button } from '@material-ui/core';
 
 
 const SignedInLinks = () => {
   return (
-    <ul className="right">
-      <li><NavLink to='/create'>New Project</NavLink></li>
-      <li><NavLink to='/logout'>Log Out</NavLink></li>
-      <li><NavLink to='/profile' className='btn btn-floating pink lighten-1'>NN</NavLink></li>
-    </ul>
+    <>
+      <Button><NavLink to='/create'>New Project</NavLink></Button>
+      <Button><NavLink to='/logout'>Log Out</NavLink></Button>
+      <Button><NavLink to='/profile' className='btn btn-floating pink lighten-1'>NN</NavLink></Button>
+    </>
   );
 }
 

@@ -4,16 +4,19 @@ import { Link } from 'react-router-dom';
 import SignedInLinks from './SignedInLinks';
 import SignedOutLinks from './SignedOutLinks';
 
+import { AppBar, Toolbar, Typography } from '@material-ui/core'
 
 const NavBar = () => {
   return (
-    <nav className="nav-wrapper grey darken-3">
-      <div className="container">
-        < Link to='/' className="brand-logo">MarioPlan</Link>
+    <AppBar position="static">
+      <Toolbar>
+        < Link to='/'><Typography variant="h6" className="h6">
+          News
+    </Typography></Link>
         <SignedInLinks />
         <SignedOutLinks />
-      </div>
-    </nav >
+      </Toolbar>
+    </AppBar>
   );
 }
 
