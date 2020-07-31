@@ -175,3 +175,82 @@ we can either use:
 * `flex=1` to proportionally fill space with elements
 
 
+### 2.3 Content
+
+We will use a Grid for the actual content.
+
+We can use `spacing={2}` on the grid container to add spacing between
+grid items.
+
+CoffeeCard.js:
+```js
+// ...
+const useStyle = makeStyles(theme => ({
+  gridPadding: {
+    padding: '50px',
+  },
+}));
+
+const Content = () => {
+  const classes = useStyle();
+
+  const coffees = data.map(coffee => {
+    const { title, price, description, avatarUrl, imageUrl } = coffee;
+    return (
+      <Grid item xs={12} sm={6} md={4}>
+        <CoffeeCard
+          title={title}
+          subtitle={price}
+          description={description}
+          avatarSrc={avatarUrl}
+          imgSrc={imageUrl}
+        />
+      </Grid>
+    );
+  });
+
+  return (
+    <Grid container spacing={2} className={classes.gridPadding}>
+      {coffees}
+    </Grid>
+  );
+}
+```
+
+Content.js
+```js
+// ...
+const useStyle = makeStyles(theme => ({
+  gridPadding: {
+    padding: '50px',
+  },
+}));
+
+
+const Content = () => {
+  const classes = useStyle();
+
+  const coffees = data.map(coffee => {
+    const { title, price, description, avatarUrl, imageUrl } = coffee;
+    return (
+      <Grid item xs={12} sm={6} md={4}>
+        <CoffeeCard
+          title={title}
+          subtitle={price}
+          description={description}
+          avatarSrc={avatarUrl}
+          imgSrc={imageUrl}
+        />
+      </Grid>
+    );
+  });
+
+  return (
+    <Grid container spacing={2} className={classes.gridPadding}>
+      {coffees}
+    </Grid>
+  );
+}
+```
+
+### 2.4 makeStyles
