@@ -1,13 +1,14 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { Button, Toolbar, Avatar } from '@material-ui/core';
 
 
 const SignedOutLinks = () => {
   return (
-    <ul className="right">
-      <li><NavLink to='/signup'>Signup</NavLink></li>
-      <li><NavLink to='/signin'>Login</NavLink></li>
-    </ul>
+    <>
+      <Button><Link to='/signup'>Signup</Link></Button>
+      <Button><Link to='/signin'>Login</Link></Button>
+    </>
   );
 }
 
