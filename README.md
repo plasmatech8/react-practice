@@ -117,3 +117,47 @@ function App() {
 }
 // ...
 ```
+
+## 2. Designing a UX Design
+
+![](docs/2020-07-31-20-21-24.png)
+
+Installs:
+```bash
+npm install @material-ui/core
+npm install @material-ui/icons
+npm install @material-ui/styles
+```
+
+### 2.1 Grid / Layout
+
+We can create a grid with Grid. Box can also be used if we want to fill an area
+with a background colour, or create a generic box.
+```js
+<Grid container direction="column">
+    <Grid item>
+        This is where the content is
+    </Grid>
+    <Grid item>
+        <Box bgcolor="red">This is where the content is</Box>
+    </Grid>
+</Grid>
+```
+
+A Grid can be a container, item, or both. Items must always be held by a
+container.
+
+We can set a grid item to a number of (12) css grid slots.
+```js
+<Grid container direction="column">
+<Grid item>
+    <Box bgcolor='blue'>APP BAR</Box>
+</Grid>
+<Grid item container>
+    <Grid item xs={null} sm={2} />
+    <Grid item xs={12} sm={8}><Box bgcolor='red'>CONTENT</Box></Grid>
+    <Grid item xs={null} sm={2} />
+</Grid>
+</Grid>
+```
+(full page on extra small+, size 2 gutters on small+)
