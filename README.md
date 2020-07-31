@@ -68,4 +68,52 @@ ReactDOM.render(
   </React.StrictMode>,
   document.getElementById('root')
 );
-````
+```
+
+### 1.3 Typograpy
+
+Another important component is [Typography](https://material-ui.com/api/typography/).
+
+It allows us to write text in a cleaner, more programatic way.
+
+(Note: you can access docs link in vscode via hover)
+
+i.e.
+```js
+<Typography variant='h2' color='primary'>Hello Material-UI</Typography>
+// instead of
+<h1>Hello Material-UI</h1>
+```
+
+### 1.4 makeStyles hook
+
+We can use the makeStyles hook to create new styles which can be added to our
+Components by passing them into the className property.
+(overrides defaults + custom theme)
+
+```js
+// ...
+import { makeStyles } from '@material-ui/core';
+
+const useStyles = makeStyles({
+  helloThereStyle: {
+    fontStyle: 'oblique' // Add slant to text
+    color: 'red',
+    fontSize: '30px'
+  }
+});
+
+function App() {
+  const classes = useStyles();
+
+  return (
+    <div className="App">
+      <Typography className={classes.helloThereStyle}>
+        Hello Material-UI
+      </Typography>
+      <Button variant="outlined" color="secondary"> Our first button</Button>
+    </div>
+  );
+}
+// ...
+```
