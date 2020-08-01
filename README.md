@@ -253,4 +253,95 @@ const Content = () => {
 }
 ```
 
-### 2.4 makeStyles
+## 3. Styling with JSS / makeStyle
+
+### 3.1 Intro
+
+JSS is the standard for styling single page REACT applications.
+
+You just use `className={classes.className}` to add the styling.
+
+```js
+import { makeStyles } from '@material-ui/core';
+const useStyles = makeStyles({
+  buttonStyle: {
+    color: 'blue'
+  }
+});
+
+<Button className={classes.buttonStyle}>Our first button</Button>
+<Button variant="outlined" color="secondary" >Our first button</Button>
+```
+
+When should I use props over CSS?
+* https://material-ui.com/api/button/#props
+* https://material-ui.com/api/button/#css
+
+Props are good to change settings on the Component, while CSS changes the
+theme on the page. Styles are applied depending on the props.
+
+### 3.2 How makeStyles works
+
+Makestyles works by mapping the rule name to a global class.
+i.e. `text` -> `.MuiButton-text`.
+
+It also automatically adds an incrementing ID to the end of the class.
+i.e. `.makeStyles-buttonStyle-1`
+
+### 3.3 Dynamic styles using props
+
+You can pass in props to modify styles.
+
+```js
+// ...
+const useStyles = makeStyles({
+  dynamicButtonStyle: {
+    color: props => props.cool ? 'green' : 'purple' // Single style value depends on props
+  },
+  dynamicButtonStyle2: props => { // Entire style depends on props
+    return {
+      color: props.cool ? 'green' : 'purple',
+      backgroundColor: props.cool ? 'yellow' : 'pink'
+    }
+  }
+});
+
+function App(props) {
+  const classes = useStyles(props);
+  return (
+    <Button className={classes.dynamicButtonStyle}>
+      Our button that changes the style based on props.
+    </Button>
+  );
+}
+```
+
+If we pass in the theme, we can also adjust defaults and change styles
+based on breakpoints.
+```js
+const useStyles = makeStyles(theme => ({
+  dynamicButtonStyle2: props => { // Entire style depends on props
+      return {
+        color: props.cool ? 'green' : 'purple',
+        backgroundColor: props.cool ? 'yellow' : 'pink',
+        [theme.breakpoints.up("sm")]: { // At sm and above, color is blue
+          color: "blue"
+        }
+      }
+    },
+}));
+```
+
+### 3.4 Apply multiple styles
+
+We can install the `classnames` package to merge multiple styles together.
+```
+npm install classnames
+```
+```js
+import classnames from 'classnames';
+
+<Button fullWidth className={classnames(classes.multiClass1, classes.multiClass2)}>
+    Our button with multiple classes.
+</Button>
+```
